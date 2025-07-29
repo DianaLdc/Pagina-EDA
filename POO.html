@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Programación Orientada a Objetos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Programación Orientada a Objetos</h1>
+  </header>
+  <hr>
+
+  <section>
+    <h2>Paradigmas de Programación</h2>
+    <p>Existen diferentes estilos de programación:</p>
+    <ul>
+      <li>Estructurados (C, Pascal, Basic)</li>
+      <li>Funcionales (CAML)</li>
+      <li>Declarativos (Prolog)</li>
+      <li>Orientados a Objetos (C#, VB.NET, Smalltalk, Java)</li>
+      <li>Orientados a Aspectos</li>
+      <li>Híbridos (Lisp, Visual Basic)</li>
+      <li>Otros menos comprensibles...</li>
+    </ul>
+    <p>Cada enfoque tiene ventajas, desventajas y usos específicos.</p>
+  </section>
+
+  <section>
+    <h2>Introducción a la POO</h2>
+    <p>La Programación Orientada a Objetos (POO) nace como un conjunto de prácticas que definen un estilo de programación basado en la forma humana de percibir el mundo: a través de objetos y relaciones.</p>
+    <p>La POO permite organizar, clasificar y relacionar componentes del problema de forma lógica y estructurada.</p>
+  </section>
+
+  <section>
+    <h2>Definición</h2>
+    <p>La POO es un estilo de programación en el que los elementos del problema se conciben como objetos, con atributos, comportamientos y relaciones.</p>
+    <p>Los objetos tienen:</p>
+    <ul>
+      <li><strong>Atributos</strong>: Definen el estado.</li>
+      <li><strong>Métodos</strong>: Definen el comportamiento.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>¿Qué es un Objeto?</h2>
+    <p><strong>Definición formal (Rumbaugh):</strong> “Un objeto es un concepto, abstracción o cosa con un significado y límites claros en el problema en cuestión”.</p>
+    <p><strong>Según Booch</strong>, un objeto posee:</p>
+    <ul>
+      <li>Estado</li>
+      <li>Comportamiento</li>
+      <li>Identidad</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>¿Por qué OO?</h2>
+    <ul>
+      <li>Se asemeja más al mundo real</li>
+      <li>Permite modelar sistemas complejos</li>
+      <li>Es ideal para aplicaciones de negocios</li>
+      <li>Es ampliamente aceptada y adoptada por plataformas modernas (Java, .NET)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Estado, Comportamiento e Identidad</h2>
+    <h3>Estado</h3>
+    <p>Representa lo que el objeto sabe. Se implementa mediante atributos y relaciones con otros objetos.</p>
+    <h3>Comportamiento</h3>
+    <p>Define lo que el objeto puede hacer. Se implementa a través de métodos y operaciones.</p>
+    <h3>Identidad</h3>
+    <p>Cada objeto tiene una identidad única, independiente de su estado.</p>
+    <img src="identidad.png" height="150">
+  </section>
+
+  <section>
+    <h2>¿Qué es una Clase?</h2>
+    <p>Una clase es una abstracción que describe un grupo de objetos con:</p>
+    <ul>
+      <li>Atributos en común</li>
+      <li>Comportamiento similar</li>
+      <li>Relaciones comunes</li>
+      <li>Significado compartido</li>
+    </ul>
+    <p>Una clase enfatiza lo relevante y suprime lo innecesario.</p>
+    <p>Un objeto es una instancia de una clase.</p>
+    <img src="clase.png" height="150">
+  </section>
+
+  <section>
+    <h2>Ejemplo de Clase</h2>
+    <p><strong>Clase:</strong> Curso</p>
+    <p><strong>Estado (Atributos):</strong></p>
+    <ul>
+      <li>Nombre</li>
+      <li>Ubicación</li>
+      <li>Días ofrecidos</li>
+      <li>Horario de inicio</li>
+      <li>Horario de término</li>
+    </ul>
+    <p><strong>Comportamiento (Métodos):</strong></p>
+    <ul>
+      <li>Agregar un alumno</li>
+      <li>Borrar un alumno</li>
+      <li>Entregar un listado del curso</li>
+      <li>Determinar si está completo</li>
+    </ul>
+    <p>Una clase es una definición abstracta con atributos, estado y operaciones.</p>
+  </section>
+
+  <section>
+    <h2>Clases y Comportamiento</h2>
+    <ul>
+      <li><strong>Atributos</strong></li>
+      <li><strong>Operaciones</strong></li>
+      <li><strong>Comportamiento</strong></li>
+    </ul>
+    <p>Ejemplo:</p>
+    <p><strong>Clase:</strong> Lavadora</p>
+    <ul>
+      <li><em>Atributos:</em> marca, modelo, capacidad</li>
+      <li><em>Métodos:</em> Programar, PonerRopa, CerrarPuerta, Lavar</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Terminología de la POO</h2>
+    <ul>
+      <li>Clase</li>
+      <li>Objeto</li>
+      <li>Atributos</li>
+      <li>Métodos</li>
+      <li>Instancia</li>
+      <li>Abstracción</li>
+      <li>Encapsulamiento</li>
+      <li>Modularidad</li>
+      <li>Jerarquía</li>
+      <li>Generalización</li>
+      <li>Herencia</li>
+      <li>Asociación</li>
+      <li>Agregación</li>
+      <li>Polimorfismo</li>
+      <li>Constructor</li>
+      <li>Destructor</li>
+      <li>Miembro público, privado y protegido</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Conceptos Clave</h2>
+    <h3>Abstracción</h3>
+    <p>Representar lo esencial de un objeto sin incluir características no relevantes.</p>
+
+    <h3>Encapsulamiento</h3>
+    <p>Separar los aspectos internos y externos de un objeto.</p>
+
+    <h3>Modularidad</h3>
+    <p>Dividir la aplicación en módulos lo más independientes posible.</p>
+
+    <h3>Jerarquía</h3>
+    <p>Clasificación de abstracciones en niveles.</p>
+
+    <h3>Generalización y Herencia</h3>
+    <p>Una clase padre define atributos y métodos comunes. Las subclases heredan esa definición.</p>
+
+    <h3>Asociación y Agregación</h3>
+    <p>Asociación: relación entre objetos. Agregación: un objeto contiene a otro.</p>
+
+    <h3>Polimorfismo</h3>
+    <p>Un mismo método puede tener múltiples implementaciones según la clase.</p>
+
+    <h3>Constructor y Destructor</h3>
+    <p>El constructor se ejecuta al crear un objeto, el destructor al eliminarlo.</p>
+
+    <h3>Miembros Públicos, Privados y Protegidos</h3>
+    <p>Controlan el nivel de acceso a los atributos y métodos de una clase.</p>
+  </section>
+
+  <footer>
+    <a href="index.html">Inicio</a>
+    <a href="Arreglos.html">Anterior</a>
+    <a href="Microeconomia.html">Siguiente</a>
+    <p>© 2025 - Trabajo académico</p>
+  </footer>
+</body>
+</html>

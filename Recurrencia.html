@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Recurrencia y Árboles</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Recurrencia y Árboles</h1>
+  </header>
+  <main>
+    <section>
+      <h2>¿Qué es la Recurrencia?</h2>
+      <p>La recurrencia o recursividad es una técnica de programación donde una función se llama a sí misma para resolver un problema. Se utiliza para dividir un problema en subproblemas más pequeños del mismo tipo.</p>
+      <h3>Ejemplo clásico: Factorial</h3>
+      <pre><code>
+int factorial(int n) {
+  if (n == 0) return 1;
+  return n * factorial(n - 1);
+}
+      </code></pre>
+      <h3>Componentes de una función recursiva</h3>
+      <ul>
+        <li><strong>Caso base:</strong> condición que detiene la recursión.</li>
+        <li><strong>Llamada recursiva:</strong> cuando la función se llama a sí misma con un nuevo valor.</li>
+      </ul>
+
+      <h3>Ventajas y desventajas</h3>
+      <ul>
+        <li><strong>Ventajas:</strong> Código más limpio y elegante para ciertos problemas.</li>
+        <li><strong>Desventajas:</strong> Consumo de memoria elevado si no se controla.</li>
+      </ul>
+
+      <h3>Recursión vs. ciclos</h3>
+      <p>Muchas veces se puede reemplazar una función recursiva con un bucle. Por ejemplo, para sumar los primeros N números.</p>
+    </section>
+
+    <section>
+      <h2>¿Qué es un Árbol?</h2>
+      <p>Un árbol es una estructura de datos jerárquica compuesta por nodos conectados. Tiene un nodo raíz y cada nodo puede tener nodos hijos.</p>
+
+      <h3>Componentes del árbol</h3>
+      <ul>
+        <li><strong>Raíz:</strong> nodo principal del árbol.</li>
+        <li><strong>Hojas:</strong> nodos sin hijos.</li>
+        <li><strong>Altura:</strong> longitud del camino más largo desde la raíz hasta una hoja.</li>
+      </ul>
+
+      <h3>Tipos comunes de árboles</h3>
+      <ul>
+        <li>Árbol binario</li>
+        <li>Árbol AVL</li>
+        <li>Arboles Red Black</li>
+      </ul>
+      </section>
+      <section>
+      <h3>Arbol binario</h3>
+      <p>Un árbol binario de búsqueda es un tipo especial de árbol binario cuya principal característica es que la información se almacena en los nodos cuidando mantener cierto orden.</p>
+      <ul>
+        <li>Todos los nodos a la izquierda son menores al padre.</li>
+        <li>Todos los nodos a la derecha son mayores al padre.</li>
+        <li>Un nodo solo puede tener 2 hijos a lo mucho</li>
+      </ul>
+      <img src="ABinario1.png" alt="" height="200px">
+      <img src="ABinario2.png" alt="" height="200px">
+      <h3>Codigo de implementacion en java</h3>
+     <pre><code>
+public class ArbolBinarioOrdenado {
+    class Nodo{
+        int info;
+        Nodo izq, der;
+      }
+      Nodo raiz;
+      public ArbolBinarioOrdenado() {
+          raiz=null;
+      }
+      public void insertar (int info){
+          Nodo nuevo;
+          nuevo = new Nodo ();
+          nuevo.info = info;
+          nuevo.izq = null;
+          nuevo.der = null;
+          if (raiz == null)
+              raiz = nuevo;
+          else{
+              Nodo anterior = null, reco;
+              reco = raiz;
+              while (reco != null){
+                  anterior = reco;
+                  if (info < reco.info)
+                      reco = reco.izq;
+                  else
+                      reco = reco.der;
+              }
+              if (info < anterior.info)
+                  anterior.izq = nuevo;
+              else
+                  anterior.der = nuevo;
+          }
+      }
+}
+    </code></pre>
+    </section>
+    <section>
+      <h3>Árbol AVL</h3>
+      <p>Un árbol AVL (Adelson–Velskii y Landis) es un árbol binario de búsqueda  que satisface la condición de estar balanceado. <br>
+      Por ser un Árbol Binario de Búsqueda respeta la propiedad de orden en todos sus nodos, es decir, todas las claves en su subárbol izquierdo son menores que la clave del nodo y todas las claves en el subárbol derecho son mayores. <br>
+      La propiedad de balanceo dice que para cada nodo del árbol, la diferencia de altura entre el subárbol izquierdo y el subárbol derecho es a lo sumo 1
+</p>
+    <img src="AVL1.png" alt="" height="200">
+    <img src="AVL2.png" alt="" height="200">
+      <pre><code>
+class Node {
+    int key, height;
+    Node left, right;
+    Node(int key) {
+        this.key = key;
+        this.height = 1;
+    }
+}
+class AVLTree {
+    Node root;
+    int height(Node node) {
+        if (node == null)
+            return 0;
+        return node.height;
+    }
+    int max(int a, int b) {
+        return (a > b) ? a : b;
+    }
+    Node rightRotate(Node node) {
+        Node leftChild = node.left;
+        Node temp = leftChild.right;
+
+        leftChild.right = node;
+        node.left = temp;
+
+        node.height = max(height(node.left), height(node.right)) + 1;
+        leftChild.height = max(height(leftChild.left), height(leftChild.right)) + 1;
+
+        return leftChild;
+    }
+
+    Node leftRotate(Node node) {
+        Node rightChild = node.right;
+        Node temp = rightChild.left;
+
+        rightChild.left = node;
+        node.right = temp;
+
+        node.height = max(height(node.left), height(node.right)) + 1;
+        rightChild.height = max(height(rightChild.left), height(rightChild.right)) + 1;
+
+        return rightChild;
+    }
+
+    int getBalance(Node node) {
+        if (node == null)
+            return 0;
+        return height(node.left) - height(node.right);
+    }
+
+    Node insert(Node root, int key) {
+        if (root == null)
+            return new Node(key);
+
+        if (key < root.key)
+            root.left = insert(root.left, key);
+        else if (key > root.key)
+            root.right = insert(root.right, key);
+        else
+            return root;
+
+        root.height = 1 + max(height(root.left), height(root.right));
+
+        int balance = getBalance(root);
+
+        if (balance > 1 && key < root.left.key)
+            return rightRotate(root);
+
+        if (balance < -1 && key > root.right.key)
+            return leftRotate(root);
+
+        if (balance > 1 && key > root.left.key) {
+            root.left = leftRotate(root.left);
+            return rightRotate(root);
+        }
+
+        if (balance < -1 && key < root.right.key) {
+            root.right = rightRotate(root.right);
+            return leftRotate(root);
+        }
+
+        return root;
+    }
+
+      </code></pre>
+      <h3>Arboles Red Black</h3>
+      <p>Los árboles binarios de búsqueda son una estructura de datos fundamental , pero su rendimiento puede verse afectado si se desequilibran. Los árboles rojo-negros son un tipo de árbol binario de búsqueda equilibrado que utiliza un conjunto de reglas para mantener el equilibrio, garantizando una complejidad temporal logarítmica para operaciones como inserción, eliminación y búsqueda , independientemente de la forma inicial del árbol. Los árboles rojo-negros se autoequilibran y utilizan un sencillo esquema de codificación por colores para ajustar el árbol tras cada modificación.Un árbol rojo-negro es un árbol binario de búsqueda autoequilibrado donde cada nodo tiene un atributo adicional: un color, que puede ser rojo o negro . El objetivo principal de estos árboles es mantener el equilibrio durante las inserciones y eliminaciones, garantizando así una recuperación y manipulación eficientes de los datos.Propiedades de los árboles rojo-negros
+<br>
+Un árbol rojo-negro tiene las siguientes propiedades: 
+<ul>
+  <li>Color del nodo : cada nodo es rojo o negro .</li>
+  <li>Propiedad de la raíz : La raíz del árbol siempre es negra .</li>
+  <li>Propiedad de la raíz : La raíz del árbol siempre es negra .</li>
+  <li>Propiedad negra : cada ruta desde un nodo a sus nodos nulos descendientes (hojas) tiene la misma cantidad de nodos negros .</li>
+  <li>Propiedad de la hoja : todas las hojas (nodos NIL) son negras .</li>
+</ul>
+</p>
+<pre><code>
+import java.io.*;
+public class RedBlackTree{
+    public Node root;//nodo raiz
+    public RedBlackTree() {
+        super();
+        root = null;
+    }
+    // nodo creando subclase
+    class Node{
+        int data;
+        Node left;
+        Node right;
+        char colour;
+        Node parent;
+
+        Node(int data)
+        {
+            super();
+            this.data = data;   // solamente incluye datos. no clave
+            this.left = null; // subarbol izquierdo
+            this.right = null; // subarbol derecho
+            this.colour = 'R'; // color . ya sea 'R' o 'B'
+            this.parent = null; // requerido en el momento de volver a comprobarlo
+        }
+    }
+    // Esta función realiza rotación izquierda
+    Node rotateLeft(Node node){
+        Node x = node.right;
+        Node y = x.left;
+        x.left = node;
+        node.right = y;
+        node.parent = x; // reseteando parent también es importante
+        if(y!=null)
+            y.parent = node;
+        return(x);
+    }
+    //Esta función desempeña la rotación derecha
+    Node rotateRight(Node node){
+        Node x = node.left;
+        Node y = x.right;
+        x.right = node;
+        node.left = y;
+        node.parent = x;
+        if(y!=null)
+            y.parent = node;
+        return(x);
+    }
+    // Estas son algunas banderas.
+    // Rotaciones respectivas son realizadas durante el traceback.
+    // las rotaciones se hacen si las banderas son verdaderas.
+    boolean ll = false;
+    boolean rr = false;
+    boolean lr = false;
+    boolean rl = false;
+    // función de ayuda para la inserción. En realidad esta función realiza todas las tareas en un solo paso.
+    Node insertHelp(Node root, int data){
+        // f es verdadero cuando un conflicto RED BLAKK esta alli
+        boolean f=false;
+        
+        // llamadas recursivas para insertar en la posción adecuada de acuerdo con las propiedades BST
+        if(root==null)
+            return(new Node(data));
+        else if(data< root.data){
+            root.left = insertHelp(root.left, data);
+            root.left.parent = root;
+            if(root!=this.root){
+                if(root.colour=='R' && root.left.colour=='R')
+                    f = true;
+            }
+        }
+        else{
+            root.right = insertHelp(root.right,data);
+            root.right.parent = root;
+            if(root!=this.root)
+            {
+                if(root.colour=='R' && root.right.colour=='R')
+                    f = true;
+            }
+        // Al mismo tiempo de inserción, también estamos en asignar nodos padres
+        // También estamos comprobando los conflictos RED
+        }
+        // ahora se permite rotar
+        if(this.ll) // for left rotate.
+        {
+            root = rotateLeft(root);
+            root.colour = 'B';
+            root.left.colour = 'R';
+            this.ll = false;
+        }
+        else if(this.rr) // para el rotar derecho{
+            root = rotateRight(root);
+            root.colour = 'B';
+            root.right.colour = 'R';
+            this.rr  = false;
+        }
+        else if(this.rl)  // para la derecha y luego a la izquierda{
+            root.right = rotateRight(root.right);
+            root.right.parent = root;
+            root = rotateLeft(root);
+            root.colour = 'B';
+            root.left.colour = 'R';
+
+            this.rl = false;
+        }
+        else if(this.lr)  // para la izquierda y luego la derecha{
+            root.left = rotateLeft(root.left);
+            root.left.parent = root;
+            root = rotateRight(root);
+            root.colour = 'B';
+            root.right.colour = 'R';
+            this.lr = false;
+        }
+        // Cuando la rotación y el deslizador se resetean las banderas
+        // Ahora vamos a encargarnos del conflicto RED RED
+        if(f){
+            if(root.parent.right == root)  // to check which child is the current node of its parent{
+                if(root.parent.left==null || root.parent.left.colour=='B')  // case when parent's sibling is black
+                {// Para comprob ar que hijo es el nodo actual de su padre
+                    if(root.left!=null && root.left.colour=='R')
+                        this.rl = true;
+                    else if(root.right!=null && root.right.colour=='R')
+                        this.ll = true;
+                }
+                else // caso cuando el hermano de los padres es negro{
+                    root.parent.left.colour = 'B';
+                    root.colour = 'B';
+                    if(root.parent!=this.root)
+                        root.parent.colour = 'R';
+                }
+            }
+            else   {
+                if(root.parent.right==null || root.parent.right.colour=='B')
+                {
+                    if(root.left!=null && root.left.colour=='R')
+                        this.rr = true;
+                    else if(root.right!=null && root.right.colour=='R')
+                        this.lr = true;
+                }
+                else{
+                    root.parent.right.colour = 'B';
+                    root.colour = 'B';
+                    if(root.parent!=this.root)
+                        root.parent.colour = 'R';
+                }
+            }
+            f = false;
+        }
+        return(root);  
+      </code></pre>
+    </section>
+    <section>
+      <h2>Recorridos de Árboles</h2>
+      <ul>
+        <li><strong>Preorden:</strong> nodo → izquierda → derecha</li>
+        <li><strong>Inorden:</strong> izquierda → nodo → derecha</li>
+        <li><strong>Postorden:</strong> izquierda → derecha → nodo</li>
+      </ul>
+
+      <h3>Recorrido preorden en Java</h3>
+      <pre><code>
+void preorden(Nodo nodo) {
+        if (nodo != null) {
+            System.out.print(nodo.dato + " ");
+            preorden(nodo.izquierdo);
+            preorden(nodo.derecho);
+        }
+    }
+      </code></pre>
+      <h3>Recorrido inorden en Java</h3>
+      <pre><code>
+ void inorden(Nodo nodo) {
+        if (nodo != null) {
+            inorden(nodo.izquierdo);
+            System.out.print(nodo.dato + " ");
+            inorden(nodo.derecho);
+        }
+    }
+      </code></pre>
+      <h3>Recorrido postorden en Java</h3>
+      <pre><code>
+void postorden(Nodo nodo) {
+        if (nodo != null) {
+            postorden(nodo.izquierdo);
+            postorden(nodo.derecho);
+            System.out.print(nodo.dato + " ");
+        }
+    }
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>¿Cómo se relacionan la Recursividad y los Árboles?</h2>
+      <p>Los árboles se procesan naturalmente mediante funciones recursivas. Los recorridos más comunes se implementan de manera recursiva, lo cual simplifica el código y permite aprovechar la estructura jerárquica del árbol.</p>
+    </section>
+  </main>
+  <footer>
+        <a href="index.html">Inicio</a>
+        <a href="Fundamentos.html">Siguiente</a>
+    <p>© 2025 - Trabajo académico</p>
+  </footer>
+</body>
+</html>

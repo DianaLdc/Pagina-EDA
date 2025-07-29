@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Fundamentos de Programación</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Fundamentos de programación</h1>
+  </header>
+
+  <section>
+    <h2>¿Qué es programar?</h2>
+    <p>Programar es escribir instrucciones para que una computadora realice una tarea específica. Estas instrucciones deben seguir una sintaxis determinada, como cualquier lenguaje.</p>
+  </section>
+
+  <section>
+    <h2>Ejemplo de programación: el coche</h2>
+    <p>Una computadora en un coche puede entender comandos como:</p>
+    <div class="code-image-row" >
+    <pre><code>
+Start;
+Go North 1 Blocks;
+Go East 2 Blocks;
+Go North 5 Blocks;
+Go East 2 Blocks;
+Stop;
+    </code></pre>
+<img src="FP1.png" height="150">
+  </div>
+    <p>Este es un ejemplo de sintaxis:</p>
+    <pre><code>
+&lt;instrucción&gt; ::= Start | Stop | Go &lt;dirección&gt; &lt;número&gt; Blocks
+&lt;dirección&gt; ::= North | East | South | West
+&lt;número&gt; ::= 1 | 2 | 3 | 4 | 5
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>Algoritmo vs. Programa</h2>
+    <p>Un algoritmo es la secuencia de pasos para resolver un problema. Un programa es la implementación del algoritmo en un lenguaje de programación.</p>
+  </section>
+
+  <section>
+    <h2>Errores comunes</h2>
+    <p>Errores de ejecución ocurren cuando una instrucción no se puede realizar</p>
+    <div class="code-image-row">
+    <pre><code>
+Start;
+Go North 1 Blocks;
+Go East 3 Blocks;
+    </code></pre>
+    <img src="ejecucion.png" height="150"></div>
+    <p>Errores de lógica ocurren cuando el programa no llega al resultado deseado</p>
+    <div class="code-image-row">
+    <pre><code>
+Start;
+Go North 1 Blocks;
+Go East 2 Blocks;
+Go North 5 Blocks;
+Go West 2 Blocks;
+Stop; 
+    </code></pre>
+    <img src="logico.png" height="150"></div>
+  </section>
+
+  <section>
+    <h2>Operadores aritméticos</h2>
+    <ul>
+      <li>+ Suma</li>
+      <li>- Resta</li>
+      <li>* Multiplicación</li>
+      <li>/ División</li>
+    </ul>
+    <pre><code>
+int a = 10;
+int b = 5;
+int c = 2;
+int resultado = a + b * c;
+System.out.println("Resultado: " + resultado); // 20
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>Variables y tipos</h2>
+    <p>Las variables almacenan datos que pueden cambiar. Deben declararse indicando su tipo:</p>
+    <pre><code>
+int edad = 19;
+double pi = 3.1416;
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>Expresiones y precedencia</h2>
+    <p>La prioridad de operadores afecta el resultado:</p>
+    <pre><code>
+int resultado = (a + b) * c; // Paréntesis primero
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>Abreviaciones aritméticas</h2>
+    <pre><code>
+a += 12; // a = a + 12;
+a *= 3;  // a = a * 3;
+a -= 5;  // a = a - 5;
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>Expresiones lógicas</h2>
+    <p>Comparaciones devuelven valores booleanos (true o false):</p>
+    <pre><code>
+a < b   // menor
+a >= b  // mayor o igual
+a == b  // igual
+a != b  // distinto
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>Condicionales: if / else</h2>
+    <pre><code>
+if (condición) {
+  // código si es verdadero
+} else {
+  // código si es falso
+}
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>Repeticiones: while</h2>
+    <pre><code>
+while (condición) {
+  // repetir mientras se cumpla
+}
+    </code></pre>
+  </section>
+
+  <footer>
+    <a href="index.html">Inicio</a>
+    <a href="Recurrencia.html">Anterior</a>
+    <a href="Arreglos.html">Siguiente</a>
+    <p>© 2025 - Trabajo académico</p>
+  </footer>
+</body>
+</html>
